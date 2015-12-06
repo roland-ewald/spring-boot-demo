@@ -8,14 +8,17 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
 import java.util.List;
+
+import static java.util.Arrays.*;
 
 /**
  * From the Vaadin docs.
@@ -30,10 +33,12 @@ public class SpringDemoVaadin extends UI {
 
   @Override
   protected void init(VaadinRequest request) {
-    List<TestBean> testBeanList = Arrays.asList(new TestBean("Abc", "Bdef"), new TestBean("C", greeter.sayHello()));
+    List<TestBean> testBeanList = asList(new TestBean("Test", "Property"), new TestBean("C", "D"));
     Grid grid = new Grid();
     grid.setContainerDataSource(new BeanItemContainer<>(TestBean.class, testBeanList));
-    setContent(grid);
+    VerticalLayout layout = new VerticalLayout();
+    layout.addComponents(grid, new Button(greeter.sayHello()));
+    setContent(layout);
   }
 
   public static void main(String[] args) {

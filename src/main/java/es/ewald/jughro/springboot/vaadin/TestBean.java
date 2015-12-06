@@ -1,6 +1,6 @@
 package es.ewald.jughro.springboot.vaadin;
 
-class TestBean {
+public class TestBean {
 
   private String a;
 
