@@ -1,23 +1,27 @@
-package es.ewald.jughro.springboot.minimal;
+/*
+ * (c) Copyright 2015, Limbus GmbH
+ * All rights reserved. 
+ */
+package es.ewald.jughro.springboot.thymeleaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 @SpringBootApplication
-@RestController
-public class SpringDemoMinimal {
+@Controller
+public class SpringDemoThymeleaf {
 
   @RequestMapping("/")
   public String testEndpoint(@RequestParam Optional<String> testParam) {
-    return "Hello World!";
+    return "template";
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(SpringDemoMinimal.class, args);
+    SpringApplication.run(SpringDemoThymeleaf.class, args);
   }
 }

@@ -77,12 +77,25 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
+	<!-- Only necessary because we have multiple @SpringBootApplications in one project: -->
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.3.0.RELEASE</version>
+				<configuration>
+					<mainClass>es.ewald.jughro.springboot.rest.SpringDemoRest</mainClass>
+					<layout>JAR</layout>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

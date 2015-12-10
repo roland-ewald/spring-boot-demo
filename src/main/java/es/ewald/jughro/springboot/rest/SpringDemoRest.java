@@ -14,6 +14,7 @@ import static java.util.Arrays.*;
 
 @SpringBootApplication
 @RestController
+//@EnableAutoConfiguration(exclude={WebMvcAutoConfiguration.class})
 public class SpringDemoRest {
 
   @Value("${demo.test.parameter:testValue}")
