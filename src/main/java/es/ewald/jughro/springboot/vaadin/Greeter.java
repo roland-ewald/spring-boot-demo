@@ -13,7 +13,7 @@ import com.vaadin.spring.annotation.UIScope;
 public class Greeter {
 
   public String sayHello() {
-    return "Hello from bean " + toString();
+    return "Hello from Spring bean";
   }
 
 }

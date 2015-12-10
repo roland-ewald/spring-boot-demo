@@ -1,5 +1,6 @@
 package es.ewald.jughro.springboot.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,9 +24,13 @@ public class SpringDemoRest {
   @Value("${demo.test.mandatory.parameter}")
   private String myImportantParameter;
 
+  @Autowired
+  private MyCustomProperties properties;
+
   @RequestMapping("/test")
   public List<String> testEndpoint(@RequestParam Optional<String> testParam) {
-    return asList("test" + testParam.orElse("-"), "test2", "test3", myTestParameter, myImportantParameter);
+    return asList("test" + testParam.orElse("-"), "test2", "test3", myTestParameter, myImportantParameter,
+        properties.getString(), properties.getInteger().toString());
   }
 
   public static void main(String[] args) {
